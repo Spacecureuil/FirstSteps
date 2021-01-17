@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 15:18:59 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/17 11:07:50 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/14 15:50:07 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/17 11:19:02 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	int temp;
+	int temp_a;
+	int temp_b;
 
-	temp = *a
-	*a = *b;
-	*b = temp;
+	temp_a = *a;
+	temp_b = *b;
+	*a = temp_a / temp_b;
+	*b = temp_a % temp_b;
 }
