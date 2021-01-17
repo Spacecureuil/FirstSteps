@@ -6,23 +6,23 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 13:58:23 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/14 14:23:36 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/15 08:15:55 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void 	ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
 	int a;
 
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
 	a = nb % 10 + '0';
 	if (nb / 10)
 		ft_putnbr(nb / 10);
 	write(1, &a, 1);
 }
-
-int main(void)
-{
-	ft_putnbr(-42);
-}	
