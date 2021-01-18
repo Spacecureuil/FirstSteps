@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 15:18:59 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/18 08:40:50 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/18 08:55:33 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/18 13:36:07 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+#include <string.h>
 
-void	ft_swap(int *a, int *b)
+char	*ft_strcpy(char *dest, char *src)
 {
-	int temp;
+	int i;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+int main()
+{
+	char src[] = "C'est bon les frites !";
+	char dest[100];
+
+	ft_strcpy(dest, src);
+	printf("chaine vaut : %s\n", src);
+	printf("copie vaut : %s\n", dest);
+	return (0);
 }

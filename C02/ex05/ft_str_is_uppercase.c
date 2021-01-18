@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 15:18:59 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/18 08:40:50 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/18 10:30:26 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/18 10:42:40 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
+int	ft_str_is_alpha(char *str)
 {
-	int temp;
+	int i;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	i = 0;
+	while (str)
+	{
+		if (str = 0)
+			return (1);
+		if ( str[i] >= 'A' && str[i] <= 'Z')
+			return (1);
+		return (0);
+	}
 }

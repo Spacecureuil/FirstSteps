@@ -6,10 +6,9 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 13:57:16 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/17 16:01:37 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/18 08:39:34 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
 void	ft_sort_int_tab(int *tab, int size)
 {
@@ -26,7 +25,7 @@ void	ft_sort_int_tab(int *tab, int size)
 				temp = tab[i];
 				tab[i] = tab[i + 1];
 				tab[i + 1] = temp;
-			}	
+			}
 			i++;
 		}
 		size--;
