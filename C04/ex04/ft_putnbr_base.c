@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 10:47:45 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/23 09:30:56 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/23 15:34:21 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,23 @@ void	ft_putnbr_base(int nbr, char *base)
 {
 	int		i;
 	int		len;
-	int		nbr_cpy;
 	char	str[33];
+	long	nbr_abs;
 
 	i = 32;
 	len = ft_strlen(base);
-	nbr_cpy = nbr;
 	if (verif_base(len, base))
 		return ;
 	if (nbr == 0)
 		str[i--] = base[0];
-	while (nbr)
+	nbr_abs = (long)nbr;
+	nbr_abs = nbr_abs < 0 ? -nbr_abs : nbr_abs;
+	while (nbr_abs)
 	{
-		str[i--] = base[nbr % len];
-		nbr = nbr / len;
+		str[i--] = base[nbr_abs % len];
+		nbr_abs /= len;
 	}
-	if (nbr_cpy < 0)
+	if (nbr < 0)
 		str[i--] = '-';
 	write(1, &str[i + 1], 32 - i);
 }
