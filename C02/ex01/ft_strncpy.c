@@ -6,16 +6,16 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 09:59:22 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/18 13:44:55 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/21 13:19:50 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while ((i < n) && src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
@@ -25,16 +25,5 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = '\0';
 		i++;
 	}
-	return dest;
-}
-
-int main()
-{
-	char src[] = "C'est bon les frites !";
-	char dest[100];
-
-	ft_strncpy(dest, src);
-	printf("chaine vaut : %s\n", src);
-	printf("copie vaut : %s\n", dest);
-	return (0);
+	return (dest);
 }

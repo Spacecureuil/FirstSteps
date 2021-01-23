@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 09:46:40 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/21 11:19:23 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/14 13:58:23 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/23 09:31:57 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned int i;
+#include <unistd.h>
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < (n - 1) && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+void	ft_putnbr(int nb)
+{
+	int i;
+
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		if (nb >= -2147483648)
+		{
+			write(1, "2147483648", 10);
+			return ;
+		}
+		nb = -nb;
+	}
+	i = nb % 10 + '0';
+	if (nb / 10)
+		ft_putnbr(nb / 10);
+	write(1, &i, 1);
 }

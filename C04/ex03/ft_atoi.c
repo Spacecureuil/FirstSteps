@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 09:46:40 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/21 11:19:23 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/21 12:09:01 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/22 10:47:06 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_atoi(char *str)
 {
-	unsigned int i;
+	int i;
+	int res;
+	int neg;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < (n - 1) && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	res = 0;
+	neg = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+			str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
 		i++;
-	return (s1[i] - s2[i]);
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res *= 10;
+		res += str[i] - 48;
+		i++;
+	}
+	return (res * neg);
 }

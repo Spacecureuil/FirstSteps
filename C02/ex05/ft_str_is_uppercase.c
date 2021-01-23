@@ -6,21 +6,20 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:30:26 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/18 10:42:40 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/21 09:46:45 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	int i;
 
 	i = 0;
-	while (str)
+	while (str[i])
 	{
-		if (str = 0)
-			return (1);
-		if ( str[i] >= 'A' && str[i] <= 'Z')
-			return (1);
-		return (0);
+		if (!(str[i] >= 'A' && str[i] <= 'Z'))
+			return (0);
+		i++;
 	}
+	return (1);
 }

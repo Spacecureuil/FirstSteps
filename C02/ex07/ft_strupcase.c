@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 09:46:40 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/21 11:19:23 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/19 10:50:00 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/21 10:05:56 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strupcase(char *str)
 {
-	unsigned int i;
+	int i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < (n - 1) && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = str[i] - 32;
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (str);
 }

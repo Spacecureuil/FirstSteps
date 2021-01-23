@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:24:46 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/18 10:43:33 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/21 09:42:26 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@ int	ft_str_is_numeric(char *str)
 	int i;
 
 	i = 0;
-	while (str)
+	while (str[i])
 	{
-		if (str = 0)
-			return (1);
-		if (str[i] >= '0' && str[i] <= '9')
-			return (1);
-		return (0);
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
 	}
+	return (1);
 }

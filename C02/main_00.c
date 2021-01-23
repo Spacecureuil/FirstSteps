@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   main_00.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 09:46:40 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/21 11:19:23 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/21 10:40:42 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/21 15:17:58 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned int i;
+#include <unistd.h>
+#include <stdio.h>
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < (n - 1) && s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+it main()
+{
+	char src[] = "frite";
+	char dest[100];
+	unsigned int n = 3;
+	ft_strncpy(dest, src, n);
+	write(1, src, 5);
+	write(1, dest, 5);
+	//printf("chaine vaut : %s\n", src);
+	//printf("copie vaut : %s\n", dest);
+	return (0);
 }
