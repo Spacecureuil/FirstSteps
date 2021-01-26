@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 09:03:29 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/26 09:03:50 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/26 13:50:21 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/26 16:38:25 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
-{
-	int b;
-	int temp;
+#include <stdlib.h>
 
-	temp = nb;
-	b = 0;
-	while (nb >= 0)
+char	*ft_strdup(char *src)
+{
+	int		i;
+	int		len;
+	char	*str;
+
+	len = 0;
+	while (src[len])
+		len++;
+	if (!(str = (char *)malloc(sizeof(str) * (len + 1))))
+			return (NULL);
+	i = 0;
+	while (i < len)
 	{
-		nb -= b;
-		b++;
-		nb -= b;
+		str[i] = src[i];
+		i++;
 	}
-	b--;
-	if (b * b == temp)
-		return (b);
-	else
-		return (0);
+	str[i] = '\0';
+	return (str);
 }
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	if (ac == 2)
-		printf("%d", ft_sqrt(atoi(av[1])));
-	return (0);
+	{
+		printf("%s \n", ft_strdup(av[1]));
+		printf("%s", strdup(av[1]));
+		return (0);
+	}
 }
