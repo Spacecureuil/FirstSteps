@@ -25,29 +25,27 @@ int					ft_strlen(char *str)
 
 char				*ft_strdup(char *src)
 {
+	char	*dest;
+	int		src_len;
 	int		i;
-	int		len;
-	char	*str;
 
-	len = 0;
-	while (src[len])
-		len++;
-	if (!(str = (char *)malloc(sizeof(str) * (len + 1))))
+	src_len = ft_strlen(src);
+	if (!(dest = (char *)malloc(sizeof(char) * (src_len + 1))))
 		return (0);
 	i = 0;
-	while (i < len)
+	while (src[i])
 	{
-		str[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	dest[i] = '\0';
+	return (dest);
 }
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	t_stock_str	*frite;
-	int			i;
+	t_stock_str		*frite;
+	int				i;
 
 	if (!(frite = (t_stock_str *)malloc(sizeof(t_stock_str) * (ac + 1))))
 		return (0);
