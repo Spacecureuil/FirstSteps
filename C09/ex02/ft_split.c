@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 13:50:21 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/30 11:50:49 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/30 16:03:26 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+int		ft_str_count(char *str, char c)
 {
-	int		i;
-	int		len;
-	char	*str;
+	int i;
+	int str_count;
 
-	len = 0;
-	while (src[len])
-		len++;
-	if (!(str = (char *)malloc(sizeof(str) * (len + 1))))
-			return (0);
-	i = 0;
-	while (i < len)
-	{
-		str[i] = src[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-#include <stdio.h>
-#include <string.h>
-
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-	{
-		printf("%s \n", ft_strdup(av[1]));
-		printf("%s", strdup(av[1]));
+	if (str == NULL)
 		return (0);
-	}
+	i = 0;
+	while (
 }
+
+void	ft_next_str(char **next_str, int *next_str_len, char c)
+{
+}
+char	**ft_split(char *str, char *charset)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/27 10:11:36 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/30 15:35:45 by pmaury           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int		ft_strlen(char *str)
@@ -10,53 +22,49 @@ int		ft_strlen(char *str)
 	return (0);
 }
 
-char	*ft_create_str(int size, char **strs, char *sep)
+char	*ft_strcat(char *dest, char *src)
 {
-	char	*str;
-	int		len;
-	int		i;
+	int i;
+	int	j;
 
-	len = 0;
 	i = 0;
-	while (i < size)
-	{
-		len += ft_strlen(strs[i]);
+	while (dest[i])
 		i++;
+	j = 0;
+	while (src[j])
+	{
+		dest[i + j] = src[j];
+		j++;
 	}
-	len += ft_strlen(sep) * size - 1;
-	if (size <= 0)
-		len = 1;
-	if (!(str = (char *)malloc(sizeof(char) * len)))
-		return (0);
-	return (str);
+	dest[i + j] = '\0';
+	return (dest);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
 	int		j;
-	int		k;
 	char	*str;
 
-	str = ft_create_str(size, strs, sep);
-	i = -1;
-	k = 0;
-	while (++i < size)
+	i = 0;
+	j = 0;
+	while (i < size)
 	{
-		j = 0;
-		while (strs[i][j])
-		{
-			str[k++] = strs[i][j];
-			j++;
-		}
-		j = 0;
-		while (sep[j] && i != size - 1)
-		{
-			str[k++] = sep[j];
-			j++;
-		}
+		j += ft_strlen(strs[i]);
+		i++;
 	}
-	str[k] = '\0';
+	j = j + (ft_strlen(sep) * (size - 1));
+	if (!(str = malloc(sizeof(char) * j)))
+		return (NULL);
+	i = 0;
+	str[0] = 0;
+	while (i <= size)
+	{
+		ft_strcat(str, strs[i]);
+		if (i != size)
+			ft_strcat(str, sep);
+		i++;
+	}
 	return (str);
 }
 
@@ -64,6 +72,6 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 int		main(int ac, char **av)
 {
-	if (ac == 4)
-		printf("%s\n", ft_strjoin(-1, av, ""));
+	printf("%s\n", ft_strjoin(ac - 2, &av[1], "-"));
+	return (0);
 }

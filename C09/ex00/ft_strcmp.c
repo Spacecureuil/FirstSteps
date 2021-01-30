@@ -1,44 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 16:22:15 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/29 10:37:07 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/20 09:46:16 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/23 16:07:48 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_range(int min, int max)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int *tab;
 	int i;
 
-	if (min >= max)
-		return (0);
-	tab = malloc(sizeof(tab) * (max - min));
 	i = 0;
-	if (tab == NULL)
-		return (0);
-	while (min < max)
-	{
-		tab[i] = min;
+	while (s1[i] == s2[i] && s1[i] != '\0')
 		i++;
-		min++;
-	}
-	return (tab);
-}
-
-#include <stdio.h>
-
-int		main(int ac, char **av)
-{
-	if (ac == 3)
-	{
-		printf("%n", ft_range(atoi(av[1]), atoi(av[2])));
-		return (0);
-	}
+	return (s1[i] - s2[i]);
 }
