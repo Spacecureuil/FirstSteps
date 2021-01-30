@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   boolean.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 16:22:15 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/29 10:37:07 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/27 10:58:53 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/27 11:06:35 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_boolean.h"
 
-int	*ft_range(int min, int max)
+void	ft_putstr(char *str)
 {
-	int *tab;
-	int i;
-
-	if (min >= max)
-		return (0);
-	tab = malloc(sizeof(tab) * (max - min));
-	i = 0;
-	if (tab == NULL)
-		return (0);
-	while (min < max)
-	{
-		tab[i] = min;
-		i++;
-		min++;
-	}
-	return (tab);
+	while (*str)
+		write(1, str++, 1);
 }
 
-#include <stdio.h>
-
-int		main(int ac, char **av)
+t_bool	ft_is_even(int nbr)
 {
-	if (ac == 3)
-	{
-		printf("%n", ft_range(atoi(av[1]), atoi(av[2])));
-		return (0);
-	}
+	return ((EVEN(nbr)) ? TRUE : FALSE);
+}
+
+int		main(int argc, char **argv)
+{
+	(void)argv;
+	if (ft_is_even(argc - 1) == TRUE)
+		ft_putstr(EVEN_MSG);
+	else
+		ft_putstr(ODD_MSG);
+	return (SUCCESS);
 }

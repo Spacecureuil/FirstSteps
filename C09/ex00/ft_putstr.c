@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 10:11:47 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/29 10:41:28 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/17 11:20:02 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/17 11:43:25 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-int		ft_ultimate_range(int **range, int min, int max)
+void	ft_putchar(char c)
 {
-	int		i;
-
-	if (min >= max)
-		return (0);
-	i = 0;
-	*range = malloc((max - min) * sizeof(int));
-	if (*range == NULL)
-		return (0);
-	while (min + i < max)
-	{
-		range[0][i] = min + i;
-		i++;
-	}
-	return (i);
+	write(1, &c, 1);
 }
 
-int		main(void)
+void	ft_putstr(char *str)
 {
-	int		*range;
-	int		i;
+	int i;
 
 	i = 0;
-	printf("return : %d\n", ft_ultimate_range(&range, -5, 50));
-	while (i < 55)
+	while (str[i] != '\0')
 	{
-	printf("%d\n", range[i]);
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (0);
 }

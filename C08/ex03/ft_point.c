@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_point.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 10:11:47 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/29 10:41:28 by pmaury           ###   ########.fr       */
+/*   Created: 2021/01/27 13:16:41 by pmaury            #+#    #+#             */
+/*   Updated: 2021/01/27 14:04:30 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_point.h"
 
-int		ft_ultimate_range(int **range, int min, int max)
+void	set_point(t_point *point)
 {
-	int		i;
-
-	if (min >= max)
-		return (0);
-	i = 0;
-	*range = malloc((max - min) * sizeof(int));
-	if (*range == NULL)
-		return (0);
-	while (min + i < max)
-	{
-		range[0][i] = min + i;
-		i++;
-	}
-	return (i);
+	point->x = 42;
+	point->y = 21;
 }
 
 int		main(void)
 {
-	int		*range;
-	int		i;
+	t_point	point;
 
-	i = 0;
-	printf("return : %d\n", ft_ultimate_range(&range, -5, 50));
-	while (i < 55)
-	{
-	printf("%d\n", range[i]);
-		i++;
-	}
+	set_point(&point);
 	return (0);
 }
