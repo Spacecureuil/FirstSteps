@@ -104,3 +104,6 @@ char	**ft_split(char *str, char *charset)
 	words[get_words_count(str, charset)] = 0;
 	return (words);
 }
+
+is_separator
+strndup ->  split
