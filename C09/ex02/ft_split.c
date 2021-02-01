@@ -26,6 +26,55 @@ int		is_separator(char c, char *charset)
 	return (0);
 }
 
+char	*ft_strndup(char *src, int n)
+{
+	int		i;
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(str) * (n + 1))))
+			return (0);
+	i = 0;
+	while (i < n)
+	{
+		str[i] = src[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+int		count_word()
+{
+
+}
+
+int		count_word_len()
+{
+
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	int		i;
+	int		words;
+	char	**tab;
+
+	char tab = (char)malloc(sizeof(char*) * (words + 1);
+	tab[words] = 0;
+	while (str[i])
+	{
+    if (is_separator(str[i]) == 0)
+		{
+        int len = count_word_len(&str[i]);
+        tab[j++] = strndup(&src[i], len); 
+	    i += len;
+    	}
+    else 
+		i++;
+}
+return (tab);
+}
+
 int		is_word(char c, char cbefore, char *charset)
 {
 	return (!is_separator(c, charset) && is_separator(cbefore, charset));
@@ -104,6 +153,3 @@ char	**ft_split(char *str, char *charset)
 	words[get_words_count(str, charset)] = 0;
 	return (words);
 }
-
-is_separator
-strndup ->  split

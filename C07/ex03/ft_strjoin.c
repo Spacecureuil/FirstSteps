@@ -19,7 +19,7 @@ int		ft_strlen(char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	return (0);
+	return (i);
 }
 
 char	*ft_strcat(char *dest, char *src)
