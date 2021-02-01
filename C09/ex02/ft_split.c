@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/30 16:03:26 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/01/31 11:50:47 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,14 @@ char	**ft_split(char *str, char *charset)
 	return (words);
 }
 
-is_separator
-strndup ->  split
+#include <stdio.h>
+
+int		main(int ac, char **av)
+{
+	if (ac == 3)
+		printf("%ls \n", ft_split(av[1], av[2]));
+	return (0);
+}
+
+//is_separator
+//strndup ->  split
