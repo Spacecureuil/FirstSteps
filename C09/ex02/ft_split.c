@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/01/31 11:50:47 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/02 13:25:05 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		is_separator(char c, char *charset)
 	{
 		if (c == charset[i])
 			return (1);
-		++i;
+		i++;
 	}
 	return (0);
 }
@@ -43,70 +43,37 @@ char	*ft_strndup(char *src, int n)
 	return (str);
 }
 
-int		count_word()
+int		count_words(char *str, char *charset)
 {
-
-}
-
-int		count_word_len()
-{
-
-}
-
-char	**ft_split(char *str, char *charset)
-{
-	int		i;
-	int		words;
-	char	**tab;
-
-	char tab = (char)malloc(sizeof(char*) * (words + 1);
-	tab[words] = 0;
-	while (str[i])
-	{
-    if (is_separator(str[i]) == 0)
-		{
-        int len = count_word_len(&str[i]);
-        tab[j++] = strndup(&src[i], len); 
-	    i += len;
-    	}
-    else 
-		i++;
-}
-return (tab);
-}
-
-int		is_word(char c, char cbefore, char *charset)
-{
-	return (!is_separator(c, charset) && is_separator(cbefore, charset));
-}
-
-int		get_words_count(char *str, char *charset)
-{
-	int	words_count;
 	int	i;
+	int	words;
 
 	i = 0;
-	words_count = 0;
-	while (str[i] != '\0')
+	words = 0;
+	while (str[i])
 	{
-		if (is_word(str[i], str[i - 1], charset) ||
-			(!is_separator(str[i], charset) && i == 0))
-			words_count++;
-		i++;
+		while (is_separator(str[i]), charset[i])
+			i++;
+		if (str[i])
+		{
+			words++;
+			while (!is_separator(str[i]), charset[i])
+				i++;
+		}
 	}
-	return (words_count);
+	return (words);
 }
 
-int		*get_words_size(char *str, char *charset)
+int		*count_words_len(char *str, char *charset)
 {
 	int	index;
 	int	i;
 	int	words_count;
-	int	*words_size;
+	int	*words_len;
 
 	i = 0;
-	words_count = get_words_count(str, charset);
-	words_size = malloc(words_count * sizeof(int));
+	words_count = count_words(str, charset);
+	words_len = malloc(words_count * sizeof(int));
 	while (i <= words_count)
 	{
 		words_size[i] = 0;
@@ -117,54 +84,55 @@ int		*get_words_size(char *str, char *charset)
 	while (str[i] != '\0')
 	{
 		if (!is_separator(str[i], charset))
-			words_size[index]++;
+			words_len[index]++;
 		else if (i > 0 && !is_separator(str[i - 1], charset))
 			index++;
 		i++;
 	}
-	return (words_size);
+	return (words_len);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char	**words;
 	int		i;
 	int		j;
-	int		index;
-	int		*words_size;
+	int		len;
+	int		words;
+	char	**tab;
 
-	words = malloc((get_words_count(str, charset) + 1) * sizeof(char*));
-	words_size = get_words_size(str, charset);
-	index = 0;
+	i = 0;
 	j = 0;
-	i = -1;
-	while (str[++i] != '\0')
+	words = count_words(str);
+	tab = (char)malloc(sizeof(char *) * (words + 1));
+	tab[words] = 0;
+	while (str[i])
 	{
-		if (!is_separator(str[i], charset))
+		if (is_separator(str[i]) == 0)
 		{
-			if (i == 0 || is_word(str[i], str[i - 1], charset))
-				words[index] = malloc(words_size[index] * sizeof(char));
-			words[index][j] = str[i];
-			words[index][++j] = '\0';
+			len = count_words_len(&str[i]);
+			tab[j++] = ft_strndup(&str[i], len);
+			i += len;
 		}
-		else if (i > 0 && !is_separator(str[i - 1], charset) && ++index)
-			j = 0;
+		else
+			i++;
 	}
-	words[get_words_count(str, charset)] = 0;
-	return (words);
+	return (tab);
 }
-<<<<<<< HEAD
-=======
 
 #include <stdio.h>
 
 int		main(int ac, char **av)
 {
+	int	i;
+
+	i = 0;
 	if (ac == 3)
-		printf("%ls \n", ft_split(av[1], av[2]));
+	{
+		while (av[i])
+		{
+			printf("%s \n", ft_split(av[1], av[2]));
+			i++;
+		}
+	}
 	return (0);
 }
-
-//is_separator
-//strndup ->  split
->>>>>>> cd18396b84dec66049a2e9817702a86c69da690f
