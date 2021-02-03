@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/03 13:33:20 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 13:40:19 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,7 @@ char	**ft_split(char *str, char *charset)
 			len = count_words_len(&str[i], charset);
 			tab[j++] = ft_strndup(&str[i], len);
 			if (tab[j] == 0)
-			{
-				while (j-- > 0)
-					free(tab[j]);
-				free(tab);
 				return (NULL);
-			}
 			i += len;
 		}
 		else
