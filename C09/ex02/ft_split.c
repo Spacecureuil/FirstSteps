@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/03 14:40:46 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 14:49:20 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		count_words(char *str, char *charset)
 		if (str[i])
 		{
 			words++;
-			while (!(str[i] && is_separator(str[i], charset)))
+			while (str[i] && !is_separator(str[i], charset))
 				i++;
 		}
 	}
@@ -69,7 +69,7 @@ int		count_words_len(char *str, char *charset)
 	int	len;
 
 	len = 0;
-	while (!is_separator(str[len], charset))
+	while (str[len] && !is_separator(str[len], charset))
 		len++;
 	return (len);
 }
