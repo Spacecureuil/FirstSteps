@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/02 13:25:05 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 12:27:42 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int		count_words(char *str, char *charset)
 	words = 0;
 	while (str[i])
 	{
-		while (is_separator(str[i]), charset[i])
+		while (is_separator(str[i], charset))
 			i++;
 		if (str[i])
 		{
 			words++;
-			while (!is_separator(str[i]), charset[i])
+			while (!is_separator(str[i], charset))
 				i++;
 		}
 	}
@@ -66,7 +66,7 @@ int		count_words(char *str, char *charset)
 
 int		*count_words_len(char *str, char *charset)
 {
-	int	index;
+	int	j;
 	int	i;
 	int	words_count;
 	int	*words_len;
@@ -76,7 +76,7 @@ int		*count_words_len(char *str, char *charset)
 	words_len = malloc(words_count * sizeof(int));
 	while (i <= words_count)
 	{
-		words_size[i] = 0;
+		words_len[i] = 0;
 		i++;
 	}
 	i = 0;
@@ -84,9 +84,9 @@ int		*count_words_len(char *str, char *charset)
 	while (str[i] != '\0')
 	{
 		if (!is_separator(str[i], charset))
-			words_len[index]++;
+			words_len[j]++;
 		else if (i > 0 && !is_separator(str[i - 1], charset))
-			index++;
+			j++;
 		i++;
 	}
 	return (words_len);
@@ -102,14 +102,14 @@ char	**ft_split(char *str, char *charset)
 
 	i = 0;
 	j = 0;
-	words = count_words(str);
-	tab = (char)malloc(sizeof(char *) * (words + 1));
+	words = count_words(str, charset);
+	tab = malloc((count_words(str, charset) + 1) * sizeof(char *));
 	tab[words] = 0;
 	while (str[i])
 	{
-		if (is_separator(str[i]) == 0)
+		if (is_separator(str[i], charset) == 0)
 		{
-			len = count_words_len(&str[i]);
+			len = count_words_len(&str[i], charset);
 			tab[j++] = ft_strndup(&str[i], len);
 			i += len;
 		}
@@ -124,13 +124,15 @@ char	**ft_split(char *str, char *charset)
 int		main(int ac, char **av)
 {
 	int	i;
+	char **split;
 
 	i = 0;
+	split = ft_split(av[1], av[2]);
 	if (ac == 3)
 	{
-		while (av[i])
+		while (i < ac)
 		{
-			printf("%s \n", ft_split(av[1], av[2]));
+			printf("%s \n", split[i]);
 			i++;
 		}
 	}
