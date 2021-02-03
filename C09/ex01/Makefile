@@ -10,26 +10,30 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
+NAME = libft.a
 
-SRCS	= ft_putchar.c ft_swap.c ft_strlen.c ft_strcmp.c ft_putstr.c
+SRCS = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c \
+	   srcs/ft_strcmp.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJS = ${SRCS:.c=.o}
 
-CFLAGS	= -Wall -Werror -Wextra
+CC		= gcc
+RM		= rm -f
 
-${NAME}:	gcc -Wall -Werror -Wextra -c ${OBJS}
-			ar rc ${NAME} ${OBJS}
-			ranlib ${NAME}
+CFLAGS = -Wall -Wextra -Werror
 
-all:		${NAME}
+.c.o:
+		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
 
-RM:			rm -f
+$(NAME): ${OBJS}
+		ar rcs ${NAME} ${OBJS}
+
+all:	${NAME}
 
 clean:
-			${RM} ${OBJS}
+		${RM} ${OBJS}
 
-fclean:		clean
-			${RM} ${NAME}
+fclean:	clean
+		${RM} ${NAME}
 
-re:			fclean all
+re:		fclean all
