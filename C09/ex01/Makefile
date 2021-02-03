@@ -24,7 +24,7 @@ ${NAME}:	gcc -Wall -Werror -Wextra -c ${OBJS}
 
 all:		${NAME}
 
-RM:			/bin/rm -f
+RM:			rm -f
 
 clean:
 			${RM} ${OBJS}
