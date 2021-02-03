@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/03 14:59:29 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 15:21:59 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,12 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		j;
 	int		len;
-	int		words;
 	char	**tab;
 
 	i = 0;
 	j = 0;
-	words = count_words(str, charset);
 	if (!(tab = malloc((count_words(str, charset) + 1) * sizeof(char *))))
 		return (0);
-	tab[words] = 0;
 	while (str[i])
 	{
 		if (str[i] && is_separator(str[i], charset) == 0)
