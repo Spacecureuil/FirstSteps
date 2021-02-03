@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/03 12:27:42 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 13:22:22 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,44 +52,26 @@ int		count_words(char *str, char *charset)
 	words = 0;
 	while (str[i])
 	{
-		while (is_separator(str[i], charset))
+		while (str[i] && is_separator(str[i], charset))
 			i++;
 		if (str[i])
 		{
 			words++;
-			while (!is_separator(str[i], charset))
+			while (!(str[i] && is_separator(str[i], charset)))
 				i++;
 		}
 	}
 	return (words);
 }
 
-int		*count_words_len(char *str, char *charset)
+int		count_words_len(char *str, char *charset)
 {
-	int	j;
-	int	i;
-	int	words_count;
-	int	*words_len;
+	int	len;
 
-	i = 0;
-	words_count = count_words(str, charset);
-	words_len = malloc(words_count * sizeof(int));
-	while (i <= words_count)
-	{
-		words_len[i] = 0;
-		i++;
-	}
-	i = 0;
-	index = 0;
-	while (str[i] != '\0')
-	{
-		if (!is_separator(str[i], charset))
-			words_len[j]++;
-		else if (i > 0 && !is_separator(str[i - 1], charset))
-			j++;
-		i++;
-	}
-	return (words_len);
+	len = 0;
+	while (!is_separator(str[len], charset))
+		len++;
+	return (len);
 }
 
 char	**ft_split(char *str, char *charset)
@@ -103,7 +85,8 @@ char	**ft_split(char *str, char *charset)
 	i = 0;
 	j = 0;
 	words = count_words(str, charset);
-	tab = malloc((count_words(str, charset) + 1) * sizeof(char *));
+	if (!(tab = malloc((count_words(str, charset) + 1) * sizeof(char *))))
+		return (0);
 	tab[words] = 0;
 	while (str[i])
 	{
@@ -130,7 +113,7 @@ int		main(int ac, char **av)
 	split = ft_split(av[1], av[2]);
 	if (ac == 3)
 	{
-		while (i < ac)
+		while (split[i])
 		{
 			printf("%s \n", split[i]);
 			i++;
