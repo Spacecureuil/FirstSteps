@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/03 14:15:54 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 14:35:38 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	**ft_split(char *str, char *charset)
 			{
 				if (tab[j] == 0)
 					return (NULL);
-				tab[j]	= ft_strndup(&str[i], len);
+				tab[j] = ft_strndup(&str[i], len);
 			}
 			i += len;
 		}
