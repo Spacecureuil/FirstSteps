@@ -6,7 +6,7 @@
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 15:43:05 by pmaury            #+#    #+#             */
-/*   Updated: 2021/02/03 13:22:22 by pmaury           ###   ########.fr       */
+/*   Updated: 2021/02/03 13:33:20 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strndup(char *src, int n)
 	char	*str;
 
 	if (!(str = (char *)malloc(sizeof(char) * (n + 1))))
-			return (0);
+		return (0);
 	i = 0;
 	while (i < n)
 	{
@@ -94,6 +94,13 @@ char	**ft_split(char *str, char *charset)
 		{
 			len = count_words_len(&str[i], charset);
 			tab[j++] = ft_strndup(&str[i], len);
+			if (tab[j] == 0)
+			{
+				while (j-- > 0)
+					free(tab[j]);
+				free(tab);
+				return (NULL);
+			}
 			i += len;
 		}
 		else
@@ -106,8 +113,8 @@ char	**ft_split(char *str, char *charset)
 
 int		main(int ac, char **av)
 {
-	int	i;
-	char **split;
+	int		i;
+	char	**split;
 
 	i = 0;
 	split = ft_split(av[1], av[2]);
