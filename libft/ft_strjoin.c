@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmaury <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 15:24:49 by pmaury            #+#    #+#             */
-/*   Updated: 2021/03/23 15:24:53 by pmaury           ###   ########.fr       */
+/*   Created: 2021/03/25 10:14:42 by pmaury            #+#    #+#             */
+/*   Updated: 2021/03/25 10:14:47 by pmaury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include "libft.h"
 
-void    ft_putchar_fd(char c, int fd)
-{
-    write(fd, &c, 1);
-}
+char    *ft_strjoin(const char *s1, const char *s2)
+{}
