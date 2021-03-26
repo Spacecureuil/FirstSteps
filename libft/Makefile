@@ -28,7 +28,7 @@ CFLAGS = -Wall -Wextra -Werror
 		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-		ar rcs ${NAME} ${OBJS}
+		ar rc ${NAME} ${OBJS}
 
 all:	${NAME}
 
