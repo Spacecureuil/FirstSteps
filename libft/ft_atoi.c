@@ -18,16 +18,19 @@ int ft_atoi(char *str)
 
     i = 0;
     res = 0;
-    neg = 1;
+    neg = -1;
     while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
 			str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
         i++;
     if (str[i] == '-')
+    {
         neg *= -1;
+        i++;
+    }
     while (str[i] >= '0' && str[i] <= '9')
     {
         res *= 10;
-        res += str[i] - 48;
+        res -= str[i] - 48;
         i++;
     }
     return (res * neg);
