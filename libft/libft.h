@@ -18,7 +18,7 @@
 # include <string.h>
 
 int ft_atoi(char *str);
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len);
 
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);
