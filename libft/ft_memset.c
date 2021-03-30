@@ -24,10 +24,3 @@ void	*ft_memset(void *dest, int c, size_t len)
 	dest = (void *)d;
 	return (dest);
 }
-
-void	*ft_memset(void *dest, int c, size_t len)
-{
-	while (len--)
-		*((unsigned char*)dest++) = c;
-	return (dest);
-}
