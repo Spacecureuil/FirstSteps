@@ -10,16 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_tolower(char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
-	}
-	return (str);
+int		ft_tolower(int c)
+{
+	if (ft_isupper(c))
+		c = c + 32;
+	return (c);
 }
