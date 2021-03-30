@@ -20,11 +20,13 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	a = (unsigned char *)dest;
 	b = (unsigned char *)src;
 	if (a > b)
+	{
 		while (len > 0)
 		{
 			a[len - 1] = b[len - 1];
 			len--;
 		}
+	}
 	else
 		ft_memcpy(dest, src, len);
 	return (dest);
