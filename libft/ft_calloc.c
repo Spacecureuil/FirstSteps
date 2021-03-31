@@ -16,7 +16,8 @@ void *calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*ptr;
 
-	ptr = malloc(size);
-	if (ptr == NULL)
-		ft_bzero(nmemb, size);
+	if (ptr = (unsigned char *)malloc(sizeof(size) * nmemb) == NULL)
+		return (0);
+	ft_bzero(ptr, nmemb);
+	return ((void *)ptr);
 }
