@@ -19,7 +19,7 @@
 
 int			ft_atoi(char *str);
 void		ft_bzero(void *s, size_t n);
-void		*calloc(size_t count, size_t size);
+void		*ft_calloc(size_t count, size_t size);
 
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
@@ -51,6 +51,5 @@ size_t		ft_strlen(const char *str);
 
 int			ft_tolower(int c);
 int			ft_toupper(int c);
-char		*ft_strnew(size_t size);
 
 #endif

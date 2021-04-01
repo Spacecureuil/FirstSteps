@@ -12,43 +12,41 @@
 
 #include "libft.h"
 
-static int	int_size(int number)
+void	isnegative(int *n, int *negative)
 {
-	int		size;
-
-	size = 0;
-	if (number < 0)
-		size++;
-	while (number)
+	if (*n < 0)
 	{
-		size++;
-		number /= 10;
+		*n *= -1;
+		*negative = 1;
 	}
-	return (size);
 }
 
 char		*itoa(int n)
 {
-	int		i;
+	int		temp;
+	int		len;
+	int		negative;
 	char	*str;
 
-	i = int_size(n) - 1;
-	if ((str = ft_strnew(int_size(n) + 1)) == NULL)
-		return (NULL);
 	if (n == -2147483648)
-		str = ft_strdup("-2147483648");
-	else if (n == 0)
-		str[0] = '0';
-	else if (n < 0)
+		return (ft_strdup("-2147483648"));
+	temp = n;
+	len = 2;
+	negative = 0;
+	isnegative(&n, &negative);
+	while (temp /= 10)
+		len++;
+	len += negative;
+	str = malloc(sizeof(char) * len);
+	if (!str)
+		return (0);
+	str[--len] = '\0';
+	while (len--)
 	{
+		str[len] = n % 10 + '0';
+		n = n / 10;
+	}
+	if (negative)
 		str[0] = '-';
-		n = n * -1;
-	}
-	while (n > 0)
-	{
-		str[i] = '0' + (n % 10);
-		n /= 10;
-		i--;
-	}
 	return (str);
 }
