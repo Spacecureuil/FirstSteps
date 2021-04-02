@@ -21,7 +21,7 @@ void	isnegative(int *n, int *negative)
 	}
 }
 
-char		*itoa(int n)
+char		*ft_itoa(int n)
 {
 	int		temp;
 	int		len;
