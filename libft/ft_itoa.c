@@ -20,7 +20,8 @@ char	*ft_itoa(int n)
 
 	i = 11;
 	buff[i--] = 0;
-	buff[i] = '0';
+	if (!n)
+		buff[i--] = '0';
 	val = n;
 	if (n < 0)
 		n = -n;
