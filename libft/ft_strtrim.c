@@ -12,50 +12,34 @@
 
 #include "libft.h"
 
-static char		*enleve_first_blanks(char *trim)
+int		is_in_set(char c, char *set)
+{
+	while (*set)
+	{
+		if (*set == c)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
-	char	*trim_copy;
+	int		j;
+	char	*str;
 
 	i = 0;
-	while (trim[i] == ' ' || trim[i] == '\n' || trim[i] == '\t')
+	while (s1[i] && is_in_set(s1[i], set))
 		i++;
-	trim_copy = &trim[i];
-	return (trim_copy);
-}
-
-static size_t	calcule_taille(char *trim)
-{
-	size_t		size;
-
-	size = ft_strlen(trim);
-	if (size == 0)
-		return (size);
-	while (trim[size] == ' ' || trim[size] == '\t' ||
-	trim[size] == '\n' || trim[size] == '\0')
-		size--;
-	return (size + 1);
-}
-
-char			*ft_strtrim(char const *s)
-{
-	char		*trim;
-	char		*res;
-	size_t		size;
-
-	if (!s)
-		return (NULL);
-	trim = (char *)s;
-	size = 0;
-	if (*trim != '\0')
-	{
-		trim = enleve_first_blanks(trim);
-		size = calcule_taille(trim);
-	}
-	res = (char *)malloc(sizeof(char) * size + 1);
-	if (res == NULL)
-		return (NULL);
-	res = ft_strncpy(res, trim, size);
-	res[size] = '\0';
-	return (res);
+	j = 0;
+	while ((s1[i + j]) && (!(is_in_set(s1[i + j], set))))
+		j++;
+	str = malloc(sizeof(char) * (j + 1));
+	if (!str)
+		return (0);
+	str[j] = 0;
+	while (j--)
+		str[j] = s1[i + j];
+	return (str);
 }
