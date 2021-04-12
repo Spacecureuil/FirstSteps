@@ -51,7 +51,7 @@ void		ft_putstr_fd(char *s, int fd);
 
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
-char		*ft_strdup(char *src);
+char		*ft_strdup(const char *src);
 char		*ft_strjoin(const char *str1, const char *str2);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 size_t		ft_strlcpy(char *dest, const char *src, size_t dstsize);
@@ -59,7 +59,7 @@ size_t		ft_strlen(const char *str);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
-char		*ft_strtrim(char const *s);
+char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 
 void		ft_lstadd_back(t_list **last, t_list *new);
