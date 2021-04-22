@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-char	*ft_strndup(char *src, int n)
+static char		*ft_strndup(char *src, int n)
 {
 	int		i;
 	char	*str;
@@ -30,7 +30,7 @@ char	*ft_strndup(char *src, int n)
 	return (str);
 }
 
-int		count_words(char *str, char charset)
+static int		count_words(char *str, char charset)
 {
 	int	i;
 	int	words;
@@ -51,7 +51,7 @@ int		count_words(char *str, char charset)
 	return (words);
 }
 
-int		count_words_len(char *str, char charset)
+static int		count_words_len(char *str, char charset)
 {
 	int	len;
 
@@ -62,7 +62,7 @@ int		count_words_len(char *str, char charset)
 }
 
 
-int		get_word(char *str, char charset, char ***tab, int j)
+static int		get_word(char *str, char charset, char ***tab, int j)
 {
 	int	i;
 
@@ -78,7 +78,7 @@ int		get_word(char *str, char charset, char ***tab, int j)
 	return (i);
 }
 
-char	**ft_split(char *str, char charset)
+char			**ft_split(char const *str, char charset)
 {
 	int		i;
 	int		j;
@@ -86,11 +86,11 @@ char	**ft_split(char *str, char charset)
 
 	i = 0;
 	j = 0;
-	tab = malloc((count_words(str, charset) + 1) * sizeof(char *));
+	tab = malloc((count_words((char*)str, charset) + 1) * sizeof(char *));
 	while (tab && str[i])
 	{
 		if (str[i] && str[i] != charset)
-			i += get_word(&str[i], charset, &tab, j++);
+			i += get_word((char*)&str[i], charset, &tab, j++);
 		else
 			i++;
 	}
