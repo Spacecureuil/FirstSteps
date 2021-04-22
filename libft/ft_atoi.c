@@ -36,13 +36,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res * neg);
 }
-
-#include <stdio.h>
-
-int	main(int ac, char **argv)
-{
-	(void)ac;
-	(void)argv;
-	printf("%d", ft_atoi(argv[1]));
-	return (0);
-}
