@@ -12,26 +12,13 @@
 
 #include <stdlib.h>
 
-int		is_separator(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strndup(char *src, int n)
 {
 	int		i;
 	char	*str;
 
-	if (!(str = (char *)malloc(sizeof(char) * (n + 1))))
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
 		return (0);
 	i = 0;
 	while (i < n)
@@ -43,7 +30,7 @@ char	*ft_strndup(char *src, int n)
 	return (str);
 }
 
-int		count_words(char *str, char *charset)
+int		count_words(char *str, char charset)
 {
 	int	i;
 	int	words;
@@ -52,71 +39,62 @@ int		count_words(char *str, char *charset)
 	words = 0;
 	while (str[i])
 	{
-		while (str[i] && is_separator(str[i], charset))
+		while (str[i] && str[i] == charset)
 			i++;
 		if (str[i])
 		{
 			words++;
-			while (str[i] && !is_separator(str[i], charset))
+			while (str[i] && str[i] != charset)
 				i++;
 		}
 	}
 	return (words);
 }
 
-int		count_words_len(char *str, char *charset)
+int		count_words_len(char *str, char charset)
 {
 	int	len;
 
 	len = 0;
-	while (str[len] && !is_separator(str[len], charset))
+	while (str[len] && str[len] != charset)
 		len++;
 	return (len);
 }
 
-char	**ft_split(char *str, char *charset)
+
+int		get_word(char *str, char charset, char ***tab, int j)
+{
+	int	i;
+
+	i = count_words_len(str, charset);
+	(*tab)[j] = ft_strndup(str, i);
+	if (!((*tab)[j]))
+	{	
+		while (j-- >= 0)
+			free((*tab)[j]);
+		free(*tab);
+		*tab = NULL;
+	}
+	return (i);
+}
+
+char	**ft_split(char *str, char charset)
 {
 	int		i;
 	int		j;
-	int		len;
 	char	**tab;
 
 	i = 0;
 	j = 0;
-	if (!(tab = malloc((count_words(str, charset) + 1) * sizeof(char *))))
-		return (0);
-	while (str[i])
+	tab = malloc((count_words(str, charset) + 1) * sizeof(char *));
+	while (tab && str[i])
 	{
-		if (str[i] && is_separator(str[i], charset) == 0)
-		{
-			len = count_words_len(&str[i], charset);
-			if (!(tab[j++] = ft_strndup(&str[i], len)))
-				return (NULL);
-			i += len;
-		}
+		if (str[i] && str[i] != charset)
+			i += get_word(&str[i], charset, &tab, j++);
 		else
 			i++;
 	}
-	tab[j] = 0;
+	if (tab)
+		tab[j] = 0;
 	return (tab);
-}
-
-#include <stdio.h>
-
-int		main(int ac, char **av)
-{
-	int		i;
-	char	**split;
-
-	i = 0;
-	split = ft_split(av[1], av[2]);
-	if (ac == 3)
-	{
-		while (split[i])
-		{
-			printf("%s \n", split[i]);
-			i++;
-		}
-	}
-	return (0);
 }
