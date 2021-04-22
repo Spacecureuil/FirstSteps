@@ -32,11 +32,7 @@ OBJS = ${SRCS:.c=.o}
 
 CC		= gcc
 
-ifeq (${OS},Windows_NT)
-	RM = del
-else
-	RM = rm -rf
-endif
+RM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -48,7 +44,7 @@ bonus: ${OBJS} ${BNS}
 
 all:	${NAME}
 
-.PHONY: clean
+.PHONY: clean bonus fclean re all
 
 clean:
 		${RM} ${OBJS}
