@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	res;
@@ -35,4 +35,14 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (res * neg);
+}
+
+#include <stdio.h>
+
+int	main(int ac, char **argv)
+{
+	(void)ac;
+	(void)argv;
+	printf("%d", ft_atoi(argv[1]));
+	return (0);
 }
